@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const events = require('./routes/api/events');
 
 const app = express();
 
@@ -21,6 +22,9 @@ mongoose
     console.log('MongoDB Connected')
   })
   .catch(err => console.log(err));
+
+  //Routes
+  app.use('/api/events', events);
 
   const port = process.env.PORT || 5000;
 
