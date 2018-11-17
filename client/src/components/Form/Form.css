@@ -1,0 +1,29 @@
+.formContainer {
+  margin: 5rem auto auto auto;
+}
+
+.form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.form form {
+  display: flex;
+}
+
+.inputs {
+  display: flex;
+  flex-flow: column;
+}
+
+.inputs * {
+  margin: 0 0 0.5rem 0;
+}
+
+.buttonSpace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+}
