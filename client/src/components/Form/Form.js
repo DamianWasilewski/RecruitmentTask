@@ -11,7 +11,8 @@ class Form extends Component {
   state = {
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    eventDate: ''
   }
 
   componentDidMount() {
@@ -23,25 +24,29 @@ class Form extends Component {
   }
 
   onSubmit = (e) => {
-    e.preventDefault();
-
+    
     const newEvent = {
-      id: 3,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
-      email: this.state.email
+      email: this.state.email,
+      eventDate: this.state.eventDate
     }
 
     this.props.addEvent(newEvent);
+
     this.setState({
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
+      eventDate: ''
     });
+    console.log(newEvent.eventDate);
+
   }
 
   onDeleteClick = (id) => {
     this.props.deleteEvent(id);
+    window.location.reload(true);
   }
 
   render() {
@@ -69,6 +74,12 @@ class Form extends Component {
               placeholder='Email'
               onChange={this.onChange}
               value={this.state.email}/>
+              <input 
+              type='date' 
+              name='eventDate'  
+              placeholder='Date'
+              onChange={this.onChange}
+              value={this.state.eventDate}/>
             </div>
             <div className='buttonSpace'>
               <button>Send</button>
@@ -76,13 +87,14 @@ class Form extends Component {
           </form>
         </div>
         <div className='details'>
-             {eventDetails.map(({ id, firstName, lastName, email }) => (
-              <ul key={id}>
+             {eventDetails.map(({ _id, firstName, lastName, email, eventDate }) => (
+              <ul key={_id}>
                 <li>{firstName}</li>
                 <li>{lastName}</li>
                 <li>{email}</li>
+                <li>{eventDate.split("T")[0]}</li>
                 <button
-                onClick={this.onDeleteClick.bind(this, id)}>Delete</button>
+                onClick={this.onDeleteClick.bind(this, _id)}>Delete</button>
               </ul>
              ))} 
         </div>

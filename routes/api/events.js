@@ -15,7 +15,8 @@ router.post('/', (req, res) => {
   const newEvent = new Event({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    email: req.body.email
+    email: req.body.email,
+    eventDate: req.body.eventDate
   });
   newEvent.save()
     .then(event => res.json(event));
