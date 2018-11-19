@@ -12,7 +12,9 @@ class Form extends Component {
     firstName: '',
     lastName: '',
     email: '',
-    eventDate: ''
+    eventDate: '',
+    errorMessage: '',
+    validation: false
   }
 
   componentDidMount() {
@@ -24,24 +26,37 @@ class Form extends Component {
   }
 
   onSubmit = (e) => {
-    
-    const newEvent = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      eventDate: this.state.eventDate
+
+    const { firstName, lastName, email, eventDate, validation} = this.state
+
+    if (firstName, lastName, eventDate, email && new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(email)) {
+      this.setState({validation: true})
+    } else {
+      this.setState({validation: false});
+      this.setState({errorMessage: 'Please fill in all fields properly'})
     }
 
-    this.props.addEvent(newEvent);
+    if (validation) {
+      const newEvent = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        eventDate: this.state.eventDate
+      }
+  
+      this.props.addEvent(newEvent);
+  
+      this.setState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        eventDate: '',
+        validation: false,
+        errorMessage: ''
+      });
+    }
 
-    this.setState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      eventDate: ''
-    });
-    console.log(newEvent.eventDate);
-
+    e.preventDefault();
   }
 
   onDeleteClick = (id) => {
@@ -53,6 +68,7 @@ class Form extends Component {
     const { eventDetails } = this.props.event;
     return (
       <div className='formContainer'>
+        <p>{this.state.errorMessage}</p>
         <div className='form'>
           <form onSubmit={this.onSubmit.bind(this)}>
             <div className='inputs'>
