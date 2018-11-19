@@ -29,8 +29,14 @@ class Form extends Component {
 
     const { firstName, lastName, email, eventDate, validation} = this.state
 
-    if (firstName, lastName, eventDate, email && new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(email)) {
+    if (firstName, lastName, eventDate, email) {
       this.setState({validation: true})
+      if (new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(email)) {
+        this.setState({validation: true})
+      } else {
+        this.setState({validation: false})
+        this.setState({errorMessage: 'Please enter correct email adress'})
+      }
     } else {
       this.setState({validation: false});
       this.setState({errorMessage: 'Please fill in all fields properly'})
