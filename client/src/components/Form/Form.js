@@ -107,7 +107,7 @@ class Form extends Component {
                 <li>{firstName}</li>
                 <li>{lastName}</li>
                 <li>{email}</li>
-                <li>{eventDate.split("T")[0]}</li>
+                <li>{eventDate}</li>
                 <button
                 onClick={this.onDeleteClick.bind(this, _id)}>Delete</button>
               </ul>
