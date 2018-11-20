@@ -26,42 +26,38 @@ class Form extends Component {
   }
 
   onSubmit = (e) => {
-
+    console.log(this.state)
     const { firstName, lastName, email, eventDate, validation} = this.state
 
     if (firstName, lastName, eventDate, email) {
-      this.setState({validation: true})
       if (new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(email)) {
-        this.setState({validation: true})
+        this.setState({validation: true}, () => {
+          if (validation) {
+            const newEvent = {
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              eventDate: eventDate
+            }
+            this.props.addEvent(newEvent);
+
+            this.setState({
+              firstName: '',
+              lastName: '',
+              email: '',
+              eventDate: '',
+              validation: false,
+              errorMessage: ''
+            })
+            console.log(this.state)
+          }
+        })
       } else {
-        this.setState({validation: false})
-        this.setState({errorMessage: 'Please enter correct email adress'})
+        this.setState({validation: false, errorMessage: 'Please enter correct email adress'})
       }
     } else {
-      this.setState({validation: false});
-      this.setState({errorMessage: 'Please fill in all fields properly'})
-    }
-
-    if (validation) {
-      const newEvent = {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        eventDate: this.state.eventDate
-      }
-  
-      this.props.addEvent(newEvent);
-  
-      this.setState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        eventDate: '',
-        validation: false,
-        errorMessage: ''
-      });
-    }
-
+      this.setState({validation: false, errorMessage: 'Please fill in all fields properly'})
+    } 
     e.preventDefault();
   }
 
