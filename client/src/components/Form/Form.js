@@ -69,7 +69,7 @@ class Form extends Component {
       <div className='formContainer'>
         <p>{this.state.errorMessage}</p>
         <div className='form'>
-          <form onSubmit={this.onSubmit.bind(this)}>
+          <form className='eventForm' onSubmit={this.onSubmit.bind(this)}>
             <div className='inputs'>
               <input 
               type='text' 
