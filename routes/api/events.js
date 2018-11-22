@@ -12,14 +12,31 @@ router.get('/', (req, res) => {
 
 //POST api/items - Create an event in DB
 router.post('/', (req, res) => {
-  const newEvent = new Event({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    eventDate: req.body.eventDate
-  });
-  newEvent.save()
-    .then(event => res.json(event));
+  let error = '';
+  if(!req.body.firstName) {
+    error = 'First name required';
+  }
+  if(!req.body.lastName) {
+    error = 'Last name required';
+  }
+  if(!req.body.email) {
+    error = 'Email required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(req.body.email)) {
+    error = 'Invalid email'
+  }
+  if(!req.body.eventDate) {
+    error = 'Event date required';
+  }
+  if(!error) {
+    const newEvent = new Event({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      eventDate: req.body.eventDate
+    });
+    newEvent.save()
+      .then(event => res.json(event));
+  }
 });
 
 //DELETE api/items/:id - Delete an event from DB
