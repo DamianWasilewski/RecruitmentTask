@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Result from '../Result/Result';
+
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -49,7 +51,7 @@ class Form extends Component {
             lastName: '',
             email: '',
             eventDate: '',
-            validation: false,
+            validation: true,
             errorMessage: ''
           })
         })
@@ -109,16 +111,16 @@ class Form extends Component {
           </form>
         </div>
         <div className='details'>
+          <ul>
              {eventDetails.map(({ _id, firstName, lastName, email, eventDate }) => (
-              <ul key={_id}>
-                <li>{firstName}</li>
-                <li>{lastName}</li>
-                <li>{email}</li>
-                <li>{eventDate}</li>
-                <button
-                onClick={this.onDeleteClick.bind(this, _id)}>Delete</button>
-              </ul>
-             ))} 
+                <Result key={_id} 
+                firstName={firstName}
+                lastName={lastName}
+                email={email}
+                eventDate={eventDate}
+                onClick={this.onDeleteClick.bind(this, _id )} />
+             ))}
+          </ul>
         </div>
       </div>
     );

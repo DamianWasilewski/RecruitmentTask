@@ -1,0 +1,10 @@
+.result {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.result > div {
+  text-align: center;
+  flex-basis: 20%;
+}
