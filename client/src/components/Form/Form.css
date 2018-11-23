@@ -1,5 +1,21 @@
+::placeholder {
+  color: whitesmoke;
+  font-size: 0.8rem;
+}
+
 .formContainer {
   margin: 5rem auto auto auto;
+}
+
+.errorBox {
+  width: 100%;
+  background: rgba(147, 41, 30, 0.5);
+}
+
+.errorBox p {
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  color: whitesmoke;
 }
 
 .form {
@@ -19,6 +35,14 @@
 
 .inputs * {
   margin: 0 0 0.5rem 0;
+  padding: 0;
+  border: none;
+  border-bottom: 2px solid rgba(147, 41, 30, 0.5);
+  background: transparent;
+  color: whitesmoke;
+  font-size: 1rem;
+  padding: 0.5rem;
+  outline: none;
 }
 
 .buttonSpace {
@@ -26,4 +50,21 @@
   justify-content: center;
   align-items: center;
   margin-left: 1rem;
+}
+
+.buttonSpace button {
+  border: 0px;
+  border-radius: 50%;
+  background: none;
+  margin-left: 0.5rem;
+  color: whitesmoke;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.buttonSpace button:hover {
+  color: #243b55;
 }

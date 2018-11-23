@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getEvents, deleteEvent, addEvent } from '../../actions/eventActions';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 
 import './Form.css';
 
@@ -14,7 +18,7 @@ class Form extends Component {
     email: '',
     eventDate: '',
     errorMessage: '',
-    validation: false
+    validation: true
   }
 
   componentDidMount() {
@@ -64,10 +68,13 @@ class Form extends Component {
   }
 
   render() {
+    library.add(faArrowRight);
     const { eventDetails } = this.props.event;
     return (
       <div className='formContainer'>
-        <p>{this.state.errorMessage}</p>
+        {!this.state.validation && <div className='errorBox'>
+          <p>{this.state.errorMessage}</p>
+        </div>}
         <div className='form'>
           <form className='eventForm' onSubmit={this.onSubmit.bind(this)}>
             <div className='inputs'>
@@ -97,7 +104,7 @@ class Form extends Component {
               value={this.state.eventDate}/>
             </div>
             <div className='buttonSpace'>
-              <button>Send</button>
+              <button><FontAwesomeIcon icon="arrow-right" /></button>
             </div>
           </form>
         </div>
