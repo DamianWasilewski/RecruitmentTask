@@ -111,14 +111,14 @@ class Form extends Component {
           </form>
         </div>
         <div className='details'>
-          <ul>
+          <ul className='detailsList'>
              {eventDetails.map(({ _id, firstName, lastName, email, eventDate }) => (
                 <Result key={_id} 
                 firstName={firstName}
                 lastName={lastName}
                 email={email}
                 eventDate={eventDate}
-                onClick={this.onDeleteClick.bind(this, _id )} />
+                onClick={this.onDeleteClick.bind(this, _id)} />
              ))}
           </ul>
         </div>
