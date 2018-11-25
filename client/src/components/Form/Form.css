@@ -70,6 +70,38 @@
   color: #243b55;
 }
 
+.details {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .detailsList {
-  padding: 0 0 1rem 0;
+  padding: 0 0 0 0;
+  flex-basis: 95%;
+}
+
+.detailsList h1 {
+  color: whitesmoke;
+  text-align: center;
+  margin: 0;
+}
+
+@media (min-width: 639px) {
+  .details {
+    width: 60%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .details {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .details {
+    width: 25%;
+  }
 }

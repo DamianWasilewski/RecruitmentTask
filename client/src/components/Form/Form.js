@@ -112,6 +112,7 @@ class Form extends Component {
         </div>
         <div className='details'>
           <ul className='detailsList'>
+            <h1>Events list</h1>
              {eventDetails.map(({ _id, firstName, lastName, email, eventDate }) => (
                 <Result key={_id} 
                 firstName={firstName}

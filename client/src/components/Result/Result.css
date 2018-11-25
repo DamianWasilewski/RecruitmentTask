@@ -1,11 +1,52 @@
 .result {
   display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
+  flex-flow: row wrap;
+  justify-content: space-between;
   color: whitesmoke;
+  border-radius: 1rem;
+  border: 1px solid black;
+  background: rgba(0, 0, 0, 0.5);
+  margin-top: 1rem;
+  transition: 0.5s;
+}
+
+.result:hover {
+  background: rgba(255, 255, 255, 0.1)
 }
 
 .result > div {
   text-align: center;
-  padding: 0.25rem;
+  padding: 0.5rem;
+}
+
+.result :nth-child(-n + 2) {
+  margin-top: 1rem;
+}
+
+.result :nth-child(n + 3) {
+  flex-basis: 100%;
+  margin: 0.25rem 0 0.25rem 0;
+}
+
+.result :last-child {
+  margin: 0;
+}
+
+.result :last-child button {
+  background: none;
+  border: none;
+  color: whitesmoke;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 319px) and (max-width: 359px) {
+  .result > div {
+    flex-basis: 40%;
+  }
+}
+
+@media (min-width: 410px) {
+  .result > div {
+    flex-basis: 45%;
+  }
 }
