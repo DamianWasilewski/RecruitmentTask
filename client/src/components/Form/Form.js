@@ -56,7 +56,9 @@ class Form extends Component {
           })
         })
       } else {
-        this.setState({validation: false, errorMessage: 'Please enter correct email adress'})
+        this.setState({validation: false, errorMessage: 'Please enter correct email adress'}, () => {
+          
+        })
       }
     } else {
       this.setState({validation: false, errorMessage: 'Please fill in all fields properly'})
