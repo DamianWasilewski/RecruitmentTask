@@ -19,7 +19,7 @@
   padding: 0.5rem;
 }
 
-.result :nth-child(-n + 2) {
+.result :first-child {
   margin-top: 1rem;
 }
 
@@ -40,13 +40,21 @@
   cursor: pointer;
 }
 
-@media (min-width: 319px) and (max-width: 359px) {
+@media (min-width: 319px) and (max-width: 1023px) {
   .result > div {
-    flex-basis: 40%;
+    flex-basis: 100%;
   }
 }
 
-@media (min-width: 410px) {
+@media (min-width: 1023px) {
+  .result :nth-child(-n + 2) {
+    margin-top: 1rem;
+  }
+
+  .result :last-child {
+    margin: 0;
+  }
+
   .result > div {
     flex-basis: 45%;
   }

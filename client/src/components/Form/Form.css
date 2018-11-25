@@ -96,12 +96,12 @@
 
 @media (min-width: 1024px) {
   .details {
-    width: 50%;
+    width: 40%;
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1365px) {
   .details {
-    width: 25%;
+    width: 30%;
   }
 }
